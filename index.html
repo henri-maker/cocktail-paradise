@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cocktail Paradise • Schulfest</title>
+
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      background:#0d0d0d;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      position:fixed;
+      top:0;
+      width:100%;
+      background:rgba(0,0,0,0.7);
+      backdrop-filter: blur(10px);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:15px 40px;
+      z-index:1000;
+    }
+
+    nav h1{
+      color:#00ffe7;
+      font-size:2rem;
+    }
+
+    nav ul{
+      display:flex;
+      list-style:none;
+      gap:20px;
+    }
+
+    nav a{
+      text-decoration:none;
+      color:white;
+      transition:0.3s;
+      font-weight:bold;
+    }
+
+    nav a:hover{
+      color:#00ffe7;
+    }
+
+    /* HERO */
+
+    .hero{
+      height:100vh;
+      background:
+      linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)),
+      url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1600&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:20px;
+    }
+
+    .hero-content h2{
+      font-size:5rem;
+      color:#00ffe7;
+      text-shadow:0 0 20px #00ffe7;
+      animation:glow 2s infinite alternate;
+    }
+
+    @keyframes glow{
+      from{
+        text-shadow:0 0 10px #00ffe7;
+      }
+      to{
+        text-shadow:0 0 30px #00ffe7,
+                     0 0 50px #00ffe7;
+      }
+    }
+
+    .hero-content p{
+      font-size:1.5rem;
+      margin-top:20px;
+    }
+
+    .hero-content button{
+      margin-top:30px;
+      padding:15px 35px;
+      border:none;
+      border-radius:40px;
+      font-size:1.1rem;
+      cursor:pointer;
+      background:#00ffe7;
+      color:black;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    .hero-content button:hover{
+      transform:scale(1.1);
+      background:white;
+    }
+
+    /* SECTION */
+
+    section{
+      padding:100px 10%;
+    }
+
+    .title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .title h2{
+      font-size:3rem;
+      color:#00ffe7;
+    }
+
+    .title p{
+      margin-top:10px;
+      color:#cccccc;
+    }
+
+    /* MENU */
+
+    .menu-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:30px;
+    }
+
+    .card{
+      background:#1a1a1a;
+      border-radius:20px;
+      overflow:hidden;
+      transition:0.4s;
+      box-shadow:0 0 15px rgba(0,255,231,0.1);
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 0 25px rgba(0,255,231,0.4);
+    }
+
+    .card img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+    }
+
+    .card-content{
+      padding:20px;
+    }
+
+    .card-content h3{
+      color:#00ffe7;
+      margin-bottom:10px;
+    }
+
+    .price{
+      margin-top:15px;
+      font-size:1.2rem;
+      font-weight:bold;
+    }
+
+    /* ABOUT */
+
+    .about{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:50px;
+      align-items:center;
+    }
+
+    .about img{
+      width:100%;
+      border-radius:20px;
+    }
+
+    .about-text h3{
+      color:#00ffe7;
+      font-size:2rem;
+      margin-bottom:20px;
+    }
+
+    .about-text p{
+      line-height:1.8;
+      color:#dddddd;
+    }
+
+    /* OPENING */
+
+    .opening{
+      text-align:center;
+      background:#111;
+      border-radius:20px;
+      padding:50px;
+    }
+
+    .opening h3{
+      color:#00ffe7;
+      margin-bottom:20px;
+      font-size:2rem;
+    }
+
+    /* CONTACT */
+
+    .contact-box{
+      background:#1a1a1a;
+      padding:40px;
+      border-radius:20px;
+      text-align:center;
+    }
+
+    .contact-box p{
+      margin:15px 0;
+      font-size:1.1rem;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:black;
+      text-align:center;
+      padding:30px;
+      color:#888;
+    }
+
+    /* DARK MODE BUTTON */
+
+    .dark-btn{
+      position:fixed;
+      right:20px;
+      bottom:20px;
+      background:#00ffe7;
+      color:black;
+      border:none;
+      width:60px;
+      height:60px;
+      border-radius:50%;
+      font-size:1.5rem;
+      cursor:pointer;
+      z-index:999;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:900px){
+
+      .hero-content h2{
+        font-size:3rem;
+      }
+
+      .about{
+        grid-template-columns:1fr;
+      }
+
+      nav{
+        flex-direction:column;
+        gap:10px;
+      }
+
+      nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+    <h1>🍹 Cocktail Paradise</h1>
+
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#menu">Menü</a></li>
+      <li><a href="#about">Über uns</a></li>
+      <li><a href="#times">Öffnungszeiten</a></li>
+      <li><a href="#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h2>SOMMERFEST GYMSOB</h2>
+
+      <p>
+        Der Cocktailstand auf dem Schulfest der Klasse 7A 🍍
+      </p>
+
+      <button onclick="bestSeller()">
+        ⭐ Bestseller anzeigen
+      </button>
+    </div>
+  </section>
+
+  <!-- MENU -->
+
+  <section id="menu">
+
+    <div class="title">
+      <h2>Unsere Cocktails</h2>
+      <p>Frisch • Fruchtig • Alkoholfrei</p>
+    </div>
+
+    <div class="menu-grid">
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="card-content">
+          <h3>Virgin Mojito</h3>
+          <p>Limette, Minze & Soda</p>
+          <div class="price">2,00 € + 1,00 € Pfand</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1551024709-8f23befc6cf7?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="card-content">
+          <h3>Tropical Sunrise</h3>
+          <p>Ananas, Orange & Grenadine</p>
+          <div class="price">2,00 € + 1,00 € Pfand</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src=<img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?q=80&w=1200&auto=format&fit=crop">
+
+
+        <div class="card-content">
+          <h3>Ipanema</h3>
+          <p>Weiss selber nd was da drinne is</p>
+          <div class="price">2,00 € + 1,00 € Pfand</div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <div class="title">
+      <h2>Über uns</h2>
+      <p>Wer wir sind</p>
+    </div>
+
+    <div class="about">
+
+      <img src="https://images.unsplash.com/photo-1525268323446-0505b6fe7778?q=80&w=1200&auto=format&fit=crop">
+
+      <div class="about-text">
+        <h3>Die beste Stimmung auf dem Schulfest 🎉</h3>
+
+        <p>
+          Wir sind die Klasse 7A und organisieren dieses Jahr
+          unseren eigenen Cocktailstand.
+          Bei uns bekommt ihr frische alkoholfreie Cocktails
+          und Sommerfeeling pur.
+        </p>
+
+        <br>
+
+        <p>
+          Kommt vorbei und probiert unseren Tropical Sunrise —
+          den absoluten Publikumsliebling!
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- OPENING -->
+
+  <section id="times">
+
+    <div class="title">
+      <h2>Öffnungszeiten</h2>
+      <p>Wann ihr uns findet</p>
+    </div>
+
+    <div class="opening">
+
+      <h3>📅 Freitag • 16:30 – 18:00 Uhr</h3>
+
+      <p>
+        Standort: Schulhof 
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <div class="title">
+      
+      <h2>Besucht uns beim Schulfest!</h2>
+    </div>
+
+    <div class="contact-box">
+
+      <p>💛 Wir freuen uns auf euch!</p>
+
+      <br>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    © 2026 Cocktail Paradise • Schulfest Website
+  </footer>
+
+  <!-- DARK MODE BUTTON -->
+
+  <button class="dark-btn" onclick="toggleMode()">
+    🌙
+  </button>
+
+  <!-- SCRIPT -->
+
+  <script>
+
+    function bestSeller(){
+      alert("⭐ Bestseller: Tropical Sunrise 🍍");
+    }
+
+ 
+    
+
+    let dark = true;
+
+    function toggleMode(){
+
+      if(dark){
+
+        document.body.style.background = "#ffffff";
+        document.body.style.color = "#111111";
+
+        dark = false;
+
+      } else {
+
+        document.body.style.background = "#0d0d0d";
+        document.body.style.color = "white";
+
+        dark = true;
+      }
+    }
+
+  </script>
+
+</body>
+</html>
